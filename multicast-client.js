@@ -8,7 +8,7 @@ client.on('listening', function () {
     console.log('UDP Client listening on ' + address.address + ":" + address.port);
     client.setBroadcast(true)
     client.setMulticastTTL(128); 
-    client.addMembership('230.185.192.108', HOST);
+    client.addMembership('68.67.148.72', HOST);
 });
 
 client.on('message', function (message, remote) {   
