@@ -19,14 +19,12 @@ server.bind(41234, function() {
 	var address = server.address();
 	console.log("server listening " + address.address + ":" + address.port);
 
-	//	Create a client;
+	//	Create a client, and send a message
 	//
 	var client = dgram.createSocket("udp4");
 	
 	var message = new Buffer("UDP says Hello!");
 
-	//	Send a message
-	//
 	client.send(message, 0, message.length, 41234, "localhost", function(err, bytes) {
 		client.close();
 	});
