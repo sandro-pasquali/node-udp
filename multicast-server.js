@@ -10,7 +10,7 @@ var news = [
 
 var dgram = require('dgram'); 
 var server = dgram.createSocket("udp4"); 
-server.bind(PORT, "0.0.0.0");
+server.bind(PORT, "230.185.192.108");
 
 server.on("listening", function() {
 
@@ -20,7 +20,7 @@ server.on("listening", function() {
 
 	function broadcastNew() {
 		var message = new Buffer(news[Math.floor(Math.random()*news.length)]);
-		server.send(message, 0, message.length, PORT, "0.0.0.0");
+		server.send(message, 0, message.length, PORT, "230.185.192.108");
 		console.log("Sent " + message + " to the wire...");
 		//server.close();
 	}
