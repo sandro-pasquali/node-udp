@@ -26,5 +26,5 @@ server.on("listening", function() {
 	}
 	
 	setInterval(broadcastNew, 3000);
-}
+});
 
