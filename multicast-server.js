@@ -26,3 +26,22 @@ setInterval(function () {
       }
   );
 }, 1000);
+
+var PORT = 5554;
+var HOST = '0.0.0.0';
+var client = dgram.createSocket('udp4');
+
+client.on('listening', function () {
+    var address = client.address();
+    console.log('UDP Client listening on ' + address.address + ":" + address.port);
+    client.setBroadcast(true)
+    client.setMulticastTTL(128); 
+    client.addMembership('239.1.2.3', HOST);
+});
+
+client.on('message', function (message, remote) {   
+    console.log('A: Epic Command Received. Preparing Relay.');
+    console.log('B: From: ' + remote.address + ':' + remote.port +' - ' + message);
+});
+
+client.bind(PORT, HOST);
