@@ -1,4 +1,4 @@
-var PORT = 8088;
+var PORT = 5554;
 var HOST = 'localhost';
 var dgram = require('dgram');
 var client = dgram.createSocket('udp4');
@@ -8,7 +8,7 @@ client.on('listening', function () {
     console.log('UDP Client listening on ' + address.address + ":" + address.port);
     client.setBroadcast(true)
     client.setMulticastTTL(128); 
-    client.addMembership('68.67.148.72', HOST);
+    client.addMembership('239.1.2.3', HOST);
 });
 
 client.on('message', function (message, remote) {   
